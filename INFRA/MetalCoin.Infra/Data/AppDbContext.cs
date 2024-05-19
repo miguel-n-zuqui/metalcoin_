@@ -20,6 +20,8 @@ namespace MetalCoin.Infra.Data
         public DbSet<Endereco> Enderecos { get; set; }
         public DbSet<Categoria> Categorias { get; set; }
 
+        public DbSet<Cupom> Cupons { get; set; }
+
         //O método OnModelCreating é chamado quando o modelo de dados
         //é criado pela primeira vez. Ele é chamado após o método
         //OnConfiguring e antes do método SaveChanges. Ele é usado
