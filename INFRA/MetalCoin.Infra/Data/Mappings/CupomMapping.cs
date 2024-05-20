@@ -35,6 +35,12 @@ namespace MetalCoin.Infra.Data.Mappings
             builder.Property(p => p.ValorDesconto)
               .HasColumnType("decimal")
               .IsRequired();
+            builder.Property(p => p.QuantidadeLiberado)
+              .HasColumnType("int")
+              .IsRequired();
+            builder.Property(p => p.QuantidadeUtilizado)
+              .HasColumnType("int")
+              .IsRequired();
         }
     }
 }

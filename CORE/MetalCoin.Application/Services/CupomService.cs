@@ -63,13 +63,14 @@ namespace MetalCoin.Application.Services
             if (cupom.DataValidade < DateTime.Now) return null;
             var cupomEntidade = new Cupom
             {
-                CodigoCupom = "aleatorio",
+                CodigoCupom = cupom.CodigoCupom,
                 Descricao = cupom.Descricao.ToUpper(),
                 statusCupom = cupom.statusCupom,
                 ValorDesconto = cupom.ValorDesconto,
                 TipoDescontoCupon = cupom.TipoDescontoCupon,
                 DataValidade = cupom.DataValidade,
-                
+                QuantidadeLiberado = cupom.QuantidadeLiberado,
+                QuantidadeUtilizado = cupom.QuantidadeUsado
                 
             };
             
@@ -110,15 +111,19 @@ namespace MetalCoin.Application.Services
             return true;
         }
 
-        //public async Task<CupomResponse> UtilizarCupom(UtilizarCupomRequest cupom)
-        //{
-        //    var cupomDb = await _cuponsRepository.BuscarPorCodigo(cupom);
-            
-        //    cupomDb.qu = TipoStatusCupom.Ativo;
-        //    await _cuponsRepository.Atualizar(cupomDb);
+        public async Task<bool> UtilizarCupom(string cupom)
+        {
+            var cupomDb = await _cuponsRepository.BuscarPorCodigo(cupom);
+
+            if (cupomDb == null) return false;
+          
+            cupomDb.QuantidadeLiberado--;
+            cupomDb.QuantidadeUtilizado++;
+
+            await _cuponsRepository.Atualizar(cupomDb);
 
 
-        //    return true;
-        //}
+            return true;
+        }
     }
 }

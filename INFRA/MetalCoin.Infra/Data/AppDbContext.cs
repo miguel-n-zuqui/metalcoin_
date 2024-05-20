@@ -1,4 +1,5 @@
-﻿using Metalcoin.Core.Domain;
+﻿using Microsoft.EntityFrameworkCore.SqlServer;
+using Metalcoin.Core.Domain;
 using Microsoft.EntityFrameworkCore;
 
 namespace MetalCoin.Infra.Data

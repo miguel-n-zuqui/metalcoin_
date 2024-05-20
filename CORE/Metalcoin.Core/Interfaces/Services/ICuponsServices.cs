@@ -17,7 +17,7 @@ namespace Metalcoin.Core.Interfaces.Services
         Task<bool> DeletarCupom(Guid id);
         Task<bool> AtivarCupom(Guid id);
         Task<bool> DesativarCupom(Guid id);
-        //Task<CupomResponse> UtilizarCupom(UtilizarCupomRequest cupom);
-        
+        Task<bool> UtilizarCupom(string cupom);
+
     }
 }

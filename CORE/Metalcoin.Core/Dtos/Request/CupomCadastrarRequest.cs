@@ -11,6 +11,8 @@ namespace Metalcoin.Core.Dtos.Request
     public class CupomCadastrarRequest
     {
         [Required(ErrorMessage = "Este campo é obrigátorio")]
+        public string CodigoCupom { get; set; }
+        [Required(ErrorMessage = "Este campo é obrigátorio")]
         [MaxLength(100, ErrorMessage = "Cupom pode ter no máximo 100 letras")]
         public string Descricao { get; set; }
         [Required(ErrorMessage = "Este campo é obrigátorio")]

@@ -87,16 +87,18 @@ namespace MetalCoin.Api.Controllers
             return Ok(response);
         }
 
-        //[HttpPut]
-        //[Route("Utilizar-cupom")]
-        //public async Task<ActionResult> UtilizarCupom([FromBody] UtilizarCupomRequest cupom)
-        //{
-        //    if (cupom == null) return BadRequest("Nenhum valor chegou na API");
+        [HttpPut]
+        [Route("Utilizar-cupom")]
+        public async Task<ActionResult> UtilizarCupom(string codigo)
+        {
+            if (codigo == null) return BadRequest("Nenhum codigo foi passado");
 
-        //    await _cuponsServices.UtilizarCupom(cupom);
+           var usarcupom = await _cuponsServices.UtilizarCupom(codigo);
 
-        //    return Ok("Cupom utilizado com sucesso");
-        //}
+            if (!usarcupom) return BadRequest("Esse cupom nao está liberado para uso");
+
+            return Ok("Cupom utilizado com sucesso");
+        }
 
 
         [HttpDelete]
